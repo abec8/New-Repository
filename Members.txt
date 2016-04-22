@@ -4,11 +4,7 @@ Andy
 
 James
 
-<<<<<<< HEAD
-Loser
-=======
-Laura
->>>>>>> origin/master
+Laura //despite being a loser, it is not her birth name.
  
 Liam
 
