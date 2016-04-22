@@ -4,7 +4,11 @@ Andy
 
 James
 
+<<<<<<< HEAD
 Loser
+=======
+Laura
+>>>>>>> origin/master
  
 Liam
 
