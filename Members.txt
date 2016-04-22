@@ -6,6 +6,14 @@ James
 
 Laura //despite being a loser, it is not her birth name.
  
+<<<<<<< HEAD
 Liam
 
 
+=======
+Laura
+ 
+Liam
+
+Another one
+>>>>>>> parent of dd9d865... Removed 5th member
