@@ -8,16 +8,16 @@ var tempLocation;
 function initMap() 
 {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -37.9120467, lng: 145.1343136},
-        zoom: 17,
+        center: {lat : -24.994167, lng : 134.866944},
+        zoom: 4,
         });
     
     var geocoder = new google.maps.Geocoder();
     
     document.getElementById("addLocation").addEventListener("click", function()
     {
-        geocodeAddress(geocoder, map);
         tempNickname = document.getElementById("nickname").stringValue;
+        geocodeAddress(geocoder, map);
     });
         
     function geocodeAddress(geocoder, resultsMap) 
@@ -32,10 +32,9 @@ function initMap()
                             nickname: tempNickname,
                             location: results[0].geometry.location
                         };
-                    localStorage.getItem(STORAGE_KEY);
+                    /*localStorage.getItem(STORAGE_KEY);
                     allLocations.push(tempLocation);
-                    var allLocationsAsJSON = JSON.stringify(allLocations);
-                    //saveLocations
+                    var allLocationsAsJSON = JSON.stringify(allLocations);*/
                 }
             else 
                 {
