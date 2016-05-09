@@ -51,7 +51,37 @@ function LocationWeatherCache()
     // property.  Returns the index of the added location.
     //
     this.addLocation = function(latitude, longitude, nickname)
-    {
+    {   
+        var newLocation = 
+            {
+                latitude: latitude,
+                longitude: longitude,
+                nickname: nickname,
+                forecasts : ""
+            };
+        
+        if (typeof(Storage) !== "undefined")
+            {
+                if (localStorage.getItem(APP_PREFIX) === null)
+                    {
+                        locations.push(newLocation);
+                        var locationsAsJSON = JSON.stringify(locations);
+                        localStorage.setItem(APP_PREFIX, locationsAsJSON);
+                        alert("Location added.");
+                    }
+                else
+                    {
+                       locations = loadLocations();
+                       locations.push(newLocation);
+                       var locationsAsJSON = JSON.stringify(locations);
+                       localStorage.setItem(APP_PREFIX, locationsAsJSON);
+                       alert("Location added."); 
+                    }
+            }
+        else
+            {
+                alert("Error : localStorage not supported by current browser.");
+            }
     }
 
     // Removes the saved location at the given index.
@@ -112,6 +142,8 @@ function LocationWeatherCache()
 //
 function loadLocations()
 {
+    var locations = JSON.parse(localStorage.getItem(APP_PREFIX));
+    return locations;
 }
 
 // Save the singleton locationWeatherCache to Local Storage.

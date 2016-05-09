@@ -1,8 +1,5 @@
 // Code for the Add Location page.
 var map;
-var allLocations = [];
-var newNickname = "";
-var newLocation;
 
 function initMap() 
 {
@@ -14,10 +11,8 @@ function initMap()
     var geocoder = new google.maps.Geocoder();
     
     document.getElementById("addLocation").addEventListener("click", function()
-    {
-        //newNickname = document.getElementById("nickname").stringValue;
+    {   
         geocodeAddress(geocoder, map);
-        //newNickname = "";
     })
         
     function geocodeAddress(geocoder, resultsMap) 
@@ -27,12 +22,24 @@ function initMap()
         {
             if (status === google.maps.GeocoderStatus.OK) 
                 {
-                    /*newLocation = 
-                        {
-                            latitude: results[0].geometry.location.lat(),
-                            longitude: results[0].geometry.location.lng(),
-                            nickname: newNickname
-                        };*/
+                    var nickname = document.getElementById("nickname").value;
+                    var newNickname;                    
+        
+                    if (nickname !== "")
+                    {
+                        newNickname = nickname;
+                    }
+                    else
+                    {
+                        newNickname = document.getElementById("address").value;
+                    }
+                    
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    
+                    var locationClass = new LocationWeatherCache();
+                    locationClass.addLocation(latitude, longitude, newNickname);
+                
                     resultsMap.setCenter(results[0].geometry.location);
                     resultsMap.setZoom(15);
                     var marker = new google.maps.Marker({
