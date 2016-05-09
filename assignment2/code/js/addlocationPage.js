@@ -15,10 +15,10 @@ function initMap()
     
     document.getElementById("addLocation").addEventListener("click", function()
     {
-        newNickname = document.getElementById("nickname").stringValue;
+        //newNickname = document.getElementById("nickname").stringValue;
         geocodeAddress(geocoder, map);
-        newNickname = "";
-    });
+        //newNickname = "";
+    })
         
     function geocodeAddress(geocoder, resultsMap) 
     {
@@ -27,17 +27,23 @@ function initMap()
         {
             if (status === google.maps.GeocoderStatus.OK) 
                 {
-                    newLocation = 
+                    /*newLocation = 
                         {
-                            latitude : results[0].geometry.location.lat(),
-                            longitude : results[0].geometry.location.lng(),
-                            nickname : newNickname
-                        };
+                            latitude: results[0].geometry.location.lat(),
+                            longitude: results[0].geometry.location.lng(),
+                            nickname: newNickname
+                        };*/
+                    resultsMap.setCenter(results[0].geometry.location);
+                    resultsMap.setZoom(15);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
                 }
             else 
                 {
                     alert("Location not found. Please try again.");
                 }
         });
-    };
+    }
 }
