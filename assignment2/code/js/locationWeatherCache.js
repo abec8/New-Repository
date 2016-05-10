@@ -37,13 +37,39 @@ function LocationWeatherCache()
     
     // Returns the number of locations stored in the cache.
     //
-    this.length = function() {
+    this.length = function() 
+    {
+        locations = loadLocations();
+        
+        if (locations !== null)
+            {
+                var numberOfLocations = locations.length + 1;
+                saveLocations(APP_PREFIX, locations);
+                return numberOfLocations;
+            }
+        else
+            {
+                alert("No locations stored.") ;   
+            }
     };
     
     // Returns the location object for a given index.
     // Indexes begin at zero.
     //
-    this.locationAtIndex = function(index) {
+    this.locationAtIndex = function(index) 
+    {
+        locations = loadLocations();
+        
+        if (locations !== null)
+            {
+                return locations[index];
+            }
+        else
+            {
+                alert("No locations stored.");    
+            }
+        
+        saveLocations();
     };
 
     // Given a latitude, longitude and nickname, this method saves a 
@@ -86,13 +112,16 @@ function LocationWeatherCache()
     // 
     this.removeLocationAtIndex = function(index)
     {
-    }
-
-    // This method is used by JSON.stringify() to serialise this class.
-    // Note that the callbacks attribute is only meaningful while there 
-    // are active web service requests and so doesn't need to be saved.
-    //
-    this.toJSON = function() {
+        locations = loadLocations();
+        if (locations !== null)
+            {
+                locations.splice(index, 1);
+                saveLocations(APP_PREFIX, locations);
+            }
+        else
+            {
+                alert("No locations stored.");
+            }
     };
 
     // Given a public-data-only version of the class (such as from
