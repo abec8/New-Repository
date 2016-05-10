@@ -65,16 +65,14 @@ function LocationWeatherCache()
                 if (localStorage.getItem(APP_PREFIX) === null)
                     {
                         locations.push(newLocation);
-                        var locationsAsJSON = JSON.stringify(locations);
-                        localStorage.setItem(APP_PREFIX, locationsAsJSON);
+                        saveLocations(APP_PREFIX, locations);
                         alert("Location added.");
                     }
                 else
                     {
                        locations = loadLocations();
                        locations.push(newLocation);
-                       var locationsAsJSON = JSON.stringify(locations);
-                       localStorage.setItem(APP_PREFIX, locationsAsJSON);
+                       saveLocations(APP_PREFIX, locations);
                        alert("Location added."); 
                     }
             }
@@ -148,7 +146,9 @@ function loadLocations()
 
 // Save the singleton locationWeatherCache to Local Storage.
 //
-function saveLocations()
+function saveLocations(stringValue, valueToStore)
 {
+    var locationsAsJSON = JSON.stringify(valueToStore);
+    localStorage.setItem(stringValue, locationsAsJSON);
 }
 

@@ -31,7 +31,7 @@ function initMap()
                     }
                     else
                     {
-                        newNickname = document.getElementById("address").value;
+                        newNickname = results[0].address_components[0].short_name;
                     }
                     
                     var latitude = results[0].geometry.location.lat();
