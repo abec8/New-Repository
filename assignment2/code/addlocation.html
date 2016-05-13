@@ -23,18 +23,34 @@
             <div class="mdl-layout__header-row">
               <span class="mdl-layout-title" id="headerBarTitle">Add Location</span>
             </div>
+              <form>
+                  <table>
+                    <tr>
+                      <td align="right">Location</td>
+                      <td align="left"><input id="address"/></td>
+                    </tr>
+                    <tr>
+                      <td align="right">Nickname</td>
+                      <td align="left"><input id="nickname"/>
+                      <td align="left"><button id="addLocation", type="button"> Add location </button></td> 
+                    </tr>
+                  </table>
+                </form>
           </header>
           <main class="mdl-layout__content">
             <div class="content-grid mdl-grid">
               <div class="mdl-cell">
-                <!--   Main page content here:   -->  
-
+                <!--   Main page content here:   -->
+                  <div id="map"></div>
               </div>
             </div>
           </main>    
         </div>
-
+        
         <!--   JavaScript files:   -->
+        <script async defer 
+                src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=&amp;callback=initMap">
+        </script>
         <script src="js/locationWeatherCache.js"></script>
         <script src="js/addlocationPage.js"></script>
     </body>
